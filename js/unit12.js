@@ -1,6 +1,5 @@
 
 
-
 class Team {
     constructor(name, color){
         this.name = name;
@@ -28,7 +27,7 @@ class Player {
 
 
 class TeamAdmin {
-    static url = "https://6454d179a74f994b3349cd0d.mockapi.io/projects/TeamSheet/TeamsInfo";
+    static url = "https://6458916f4eb3f674df77425b.mockapi.io/TeamsInfo";
 
 
     static getAllTeams(){
@@ -102,31 +101,110 @@ class TeamDOMManager {
     }
 
     
-    static createTeam(team){
+    static createTeam(teamName, teamColor){
         // use the ajax post method to post newly created team to API
         
-        TeamAdmin.createTeam(team);
+        TeamAdmin.createTeam(new Team(teamName, teamColor))
+            .then(() => {
+                    return TeamAdmin.getAllTeams();
+                })
+                .then(teams => this.show(teams));
+            
+            // .then(teams => console.log(teams));
     }
+
     
     static deleteTeam(id){
         // use the ajax delete method to delete team info from API
-        
+        TeamAdmin.deleteTeam(id)
+            .then(() => {
+                return TeamAdmin.getAllTeams();
+            })
+            .then(teams => this.show(teams));
     }
     
-    static createPlayer(pName, pPosition){
+
+    static createPlayer(id){
         // use the ajax get method to get particular team from API using team ID or name
+        for(let team of teams){
+            if (team.id == id){
+                alert(`${team.id}`)
+                let pName = $('#add-playerName').val();
+                let pPosition = $('#add-playerPosition').val()
+                team.players.push(new Player(pName, pPosition))
+                console.log(new Player(pName, pPosition));
+                // TeamAdmin.updateTeam(team)
+                //     .then(() => {
+                //         return TeamAdmin.getAllTeams();
+                //     })
+                //     .then(teams => this.show(teams));
+            }
+        }
         
     }
     
-    static deletePlayer(ID){
+
+    static deletePlayer(teamID, pID){
         // use the ajax put method to update info about a unique team in API
-        
+        for(let team of teams){
+            if (team.id == teamID){
+                for(let player of team){
+                    if (player.id == pID ){
+                        team.players.splice(team.players.indexOf(player), 1);
+                        TeamAdmin.updateTeam(team)
+                        .then(() => {
+                            return TeamAdmin.getAllTeams();
+                        })
+                        .then(teams => this.show(teams));
+                    }
+                }
+            }
+        }   
     }
+
+
     static show(teams){
         // this method re-render the DOM and create, update, or delete accordingly
     
         // this method develops how the structure of a typical team should be with buttons to delete player, delete the enitire team, and create player
         this.teams = teams;
+        $('#teams').empty();
+        for(let team of teams) {
+            $('#teams').prepend(
+                `
+            <div id="teams" class="teams">
+            <!-- should contain all teams -->
+            <div class="newTeam container-md">
+                <div id="newTeam__teamName"> ${team.name} ${team.color}</div>
+                <button id="delete__team" onclick="TeamDOMManager.deleteTeam(${team.id})" class="btn btn-warning">Delete Team</button>
+                <label for="add-teamPlayerName">
+                    <input type="text" id="add-playerName" placeholder="Player Name">
+                </label> 
+                <label for="add-teamPlayer">
+                    <input type="text" id="add-playerPosition" placeholder="Player Position">
+                </label> <br>
+                <button id="createNewPlayer" onclick="TeamDOMManager.createPlayer(${team.id})" class="btn btn-warning">Create Player</button>
+                <div id="newTeam__teamPlayers">
+                    <div class="player-detail">
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
+        `);
+        // for(let player of team.players){
+        //     $(`#${team.id}`).find('.player-detail').append(
+        //         `
+        //         <p>
+        //             <span  id="pName"> ${player.playerName} </span>
+        //             <span  id="pPosition"> ${player.playerPostion} </span>
+        //             <button class="btn btn-danger">Delete</button>
+        //          </p>
+        //         `
+        //     );
+        // }
+            // console.log(`${team.id} ${team.name} ${team.color + "\n"} `);
+        }
 
     
     }
@@ -134,22 +212,51 @@ class TeamDOMManager {
 
 
 
+// BTN FOR ADDING NEW TEAM
+$('#create-new-team').on('click', function (){
+    let tName = $('#team-name').val();
+    let tColor = $('#team-color').val();
+
+    TeamDOMManager.createTeam(tName, tColor);
+    $('#team-name').val("");
+    $('#team-color').val("");
+});  
+   
+// BTN FOR ADDING NEW PLAYER
+// $('#createNewPlayer').on('click', function (){
+//     let pName = $('#add-playerName').val();
+//     let pPosition = $('#add-playerPosition').val();
+
+//     TeamDOMManager.createPlayer(pName, pPosition);
+//     $('#team-name').val("");
+//     $('#team-color').val("");
+// });
+
+
 let myNewTeam = {
     name: 'manUtd',
     createdAt: 'New York',
-    avatar: 'car'
+    color: 'red'
 }
 
 let myNewTeam2 = {
     name: 'Chelsea',
     createdAt: 'Boston',
     avatar: 'Trailer',
-    id: 2
+    color : 'blue'
 }
+
+let myNewTeam3 = {
+    name: 'Man City',
+    createdAt: 'Philly',
+    avatar: 'Trooper',
+}
+
+let myNewTeam4 = ('Man Utd');
 
 // xhr.open('DELETE', 'url-endpoint/id');
 
-// xhr.addEventListener('load', ()=>{
+// xhr.addE ventListener('load', ()=>{
 //     if(xhr.status === 204 && xhr.readyState === 4){
 //         console.log('xhr.status')
 //     } else{
@@ -173,7 +280,19 @@ let myNewTeam2 = {
 
 
 
-// TeamDOMManager.getAllTeams();
+TeamDOMManager.getAllTeams();
+// TeamDOMManager.createTeam('chelsea', 'newBlue');
+// TeamDOMManager.deleteTeam(1);
+
+
+
+
+// let myTeam10 = new Team('Man City', 'red');
+// let myTeam10 = TeamDOMManager.createTeam(myNewTeam);
+// console.log(myTeam10);
+
+
+
 
 
 // Admin.then(data => {console.log(Admin.responseText)});

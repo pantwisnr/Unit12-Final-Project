@@ -47,3 +47,23 @@ body{
     gap: 1rem;
 
 }
+
+.teams {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* gap: 0.3rem; */
+}
+
+.newTeam {
+    width: 300px;
+    height: 300px;
+    border: 2 px solid #333;
+    background: blue;
+    margin: 0.5rem;
+    color: white; 
+    
+}
