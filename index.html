@@ -5,21 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TEAM SERVICES</title>
+    <!-- Bootstrap Link -->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Css link -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     
-    <div class="container-md border teamParent"> 
-        <div class="team team-details">new team details<br>
+    <div class="container-md  teamParent"> 
+
+        <div class="container-fluid border team teamParent__createTeamForm">
+            <h4 class="teamParent__title">New Team Form Details</h4>
+            <span class="searchBar"><i class="fa-solid fa-magnifying-glass fa-beat"></i></span>
             <label for="team-name">
-                <input type="text" id="team-name" placeholder="Enter team name">
+                <input type="text" id="team-name" placeholder="Enter team name" class="form-control teamParent__input1">
             </label>
             <label for="team-color">
-                <input type="text" id="team-color" placeholder="Enter team color">
+                <input type="text" id="team-color" placeholder="Enter team color" class="form-control teamParent__input2">
             </label> <br>
             
-            <button id="create-new-team" class="btn btn-primary"> Create Team</button>
+            <button id="create-new-team" class="btn btn-primary form-control" > Create Team</button>
         </div>
         
         
@@ -27,10 +34,10 @@
 
         <!--  to be reomved start here -->
 
-        <!-- <div id="teams" class="teams">
+        <div id="teams" class="container-fluid teams ">
           
-            <div class="newTeam container-md">
-                <div id="newTeam__teamName"></div>
+            <!-- <div class="newTeam container-md">
+                <div id="newTeam__teamName">ManCity</div>
                 <button id="delete__team" class="btn btn-warning">Delete</button>
                 <div id="newTeam__teamColor"></div>
                 <div id="newTeam__teamPlayers">
@@ -40,8 +47,8 @@
                         <button class="btn btn-warning">Delete P</button>
                     </div>
                 </div>
-            </div>
-        </div> -->
+            </div> -->
+        </div>
         <!--  to be reomved end here -->
     </div>
 
