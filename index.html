@@ -16,25 +16,31 @@
     
     <div class="container-md  teamParent"> 
 
-        <div class="container-fluid border team teamParent__createTeamForm">
+        <dialog data-modal>
+            <h5> Look up Team</h5>
+            <input type="text"  placeholder="enter Team Name">
+            <span class="closeModal" data-close-modal><i class="fa-solid fa-xmark"></i></span>
+        </dialog>
+
+        <div class="container-fluid  team teamParent__createTeamForm">
             <h4 class="teamParent__title">New Team Form Details</h4>
-            <span class="searchBar"><i class="fa-solid fa-magnifying-glass fa-beat"></i></span>
-            <label for="team-name">
+            <span class="searchBar" data-open-modal><i class="fa-solid fa-magnifying-glass fa-beat"></i></span>
+            <label class="teamParent__label" for="team-name">
                 <input type="text" id="team-name" placeholder="Enter team name" class="form-control teamParent__input1">
             </label>
-            <label for="team-color">
+            <label class="teamParent__label" for="team-color">
                 <input type="text" id="team-color" placeholder="Enter team color" class="form-control teamParent__input2">
             </label> <br>
             
             <button id="create-new-team" class="btn btn-primary form-control" > Create Team</button>
         </div>
-        
-        
 
 
         <!--  to be reomved start here -->
 
-        <div id="teams" class="container-fluid teams ">
+        <div id="teams" class="container-fluid teams">
+
+
           
             <!-- <div class="newTeam container-md">
                 <div id="newTeam__teamName">ManCity</div>
@@ -51,29 +57,6 @@
         </div>
         <!--  to be reomved end here -->
     </div>
-
-
-
-
-
-    <!-- make sure this works because this is not showing -->
-    <div id="teams" class="teams">
-        <!-- should contain all teams -->
-        <!-- <div class="newTeam container-md">
-            <div id="newTeam__teamName"></div>
-            <button id="delete__team" class="btn btn-warning">Delete</button>
-            <div id="newTeam__teamColor"></div>
-            <div id="newTeam__teamPlayers">
-                <div class="player-detail">
-                    <div class="pName"></div>
-                    <div class="pPos"></div>
-                    <button class="btn btn-warning">Delete P</button>
-                </div>
-            </div>
-        </div> -->
-    </div>
-
-
 
 
     <script src="node_modules/jquery/dist/jquery.min.js"></script>

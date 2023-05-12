@@ -1,3 +1,14 @@
+const search = document.querySelector('.searchBar');
+const modal = document.querySelector('[data-modal]');
+const closeModal = document.querySelector('.closeModal');
+
+search.addEventListener('click', () => {
+    modal.showModal();
+});
+
+closeModal.addEventListener('click', () => {
+    modal.close();
+});
 
 
 class Team {
@@ -172,19 +183,25 @@ class TeamDOMManager {
         for(let team of teams) {
             $('#teams').prepend(
                 `
-                <div id="${team.id}" class="newTeam container-md">
-                    <h5 id="newTeam__teamName"> ${team.name} ${team.color} </h5>
-                    <button id="delete__team" onclick="TeamDOMManager.deleteTeam(${team.id})" class="btn btn-warning">Delete Team</button>
-                    <label for="add-PlayerName">
-                        <input type="text" id="${team.id}-add-PlayerName" placeholder="Player Name">
-                    </label> 
-                    <label for="add-PlayerPosition">
-                        <input type="text" id="${team.id}-add-PlayerPosition" placeholder="Player Position">
-                    </label> <br>
-                    <button id="createNewPlayer" onclick="TeamDOMManager.createPlayer(${team.id})" class="btn btn-warning">Create Player</button>
-                    <div id="newTeam__teamPlayers">
-                        <div class="player-detail">
-                        
+                <div class="newTeam__container"> 
+                    <div id="${team.id}" class="newTeam container-md">
+                        <div class="newTeam__header">
+                            <h5 id="newTeam__teamName" class="item1"> ${team.name} ${team.color} </h5>
+                            <button id="delete__team" onclick="TeamDOMManager.deleteTeam(${team.id})" class="btn btn-danger item2"> Delete </button>
+                        </div>
+                        <div class="input-flex">
+                        <label for="add-PlayerName">
+                        <input type="text" id="${team.id}-add-PlayerName" placeholder="Player Name" class="item3">
+                        </label> <br>
+                        <label for="add-PlayerPosition">
+                            <input type="text" id="${team.id}-add-PlayerPosition" placeholder="Player Number" class="item4">
+                        </label> <br>
+                        </div>
+                        <button id="createNewPlayer" onclick="TeamDOMManager.createPlayer(${team.id})" class="btn btn-warning item5">Create Player</button>
+                        <div id="newTeam__teamPlayers">
+                            <div class="player-detail">
+                            
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -197,7 +214,7 @@ class TeamDOMManager {
                     <p>
                         <span  id="${player.id}-pName"> ${player.playerName} </span>
                         <span  id="${player.id}-pPosition"> ${player.playerPostion} </span>
-                        <button onclick="TeamDOMManager.deletePlayer(${team.id}, '${player.playerName}')" class="btn btn-danger">Delete</button>
+                        <button onclick="TeamDOMManager.deletePlayer(${team.id}, '${player.playerName}')" class="btn btn-warning"><i class="fa-solid fa-xmark"></i></button>
                      </p>
                     `
                 );
