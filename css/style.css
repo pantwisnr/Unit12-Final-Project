@@ -33,6 +33,7 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
 
+    background: #d3d3d3;
     background: #495cbd;
   
 }
@@ -118,12 +119,12 @@ dialog {
     padding: 0.65rem;
     margin-bottom:  0.5rem;
     background: #222;
+    border-radius: 10px;
 
     display: flex;
     justify-content: center;
     align-content: center;
 
-    border-radius: 10px;
 
     box-shadow: 0px 1px 5px 0px aqua,
     0px 2px 2px 0px aqua,
@@ -200,7 +201,7 @@ dialog {
 
 .newTeam {
     width: 92%;
-    padding: 1.45rem;
+    padding: 0.45rem;
     border: 2 px solid #333;
     background: #425097;
     margin: 0.5rem;

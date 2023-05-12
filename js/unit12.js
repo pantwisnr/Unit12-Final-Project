@@ -186,7 +186,7 @@ class TeamDOMManager {
                 <div class="newTeam__container"> 
                     <div id="${team.id}" class="newTeam container-md">
                         <div class="newTeam__header">
-                            <h5 id="newTeam__teamName" class="item1"> ${team.name} ${team.color} </h5>
+                            <h5 id="newTeam__teamName" class="item1 newTeam__title"> ${team.name}  </h5>
                             <button id="delete__team" onclick="TeamDOMManager.deleteTeam(${team.id})" class="btn btn-danger item2"> Delete </button>
                         </div>
                         <div class="input-flex">
@@ -206,7 +206,49 @@ class TeamDOMManager {
                     </div>
                 </div>
             `);
-       
+             
+            for(let team of teams){
+                if(!team.color){
+
+                    $( `#${team.id}`).on( "mouseenter", function () {
+                        $(this).css("box-shadow", 
+                         `
+                         1px 3px 3px 0px aqua,
+                        1px 3px 3px 0px aqua`
+                        );} ).on( "mouseleave", function () {
+                            $(this).css("box-shadow", 
+                         `
+                         1px 3px 3px 0px #222,
+                        1px 3px 3px 0px #222`
+                        );} );
+
+                } else{
+                    $(`#${team.id}`).find('.newTeam__title').css("border", `2px solid ${team.color}`);
+
+                    $(`#${team.id}`).on( "mouseenter", function () {
+                        $(this).css("box-shadow", 
+                         `
+                         1px 3px 3px 2px ${team.color},
+                        1px 3px 3px 1px ${team.color}`
+                        );} ).on( "mouseleave", function () {
+                            $(this).css("box-shadow", 
+                         `
+                         1px 3px 3px 0px #222,
+                        1px 3px 3px 0px #222`
+                        );} );
+                }
+            }
+
+            // border: 2px solid red;
+
+
+            // $( selector ).on( "mouseenter", function () {
+            //     $(this).css("background-color", "green");} ).on( "mouseleave", function () {
+            //         $(this).css("background-color", "inherit");} );
+
+            // function () {
+            //     $(this).css("background-color", "green");}
+            
             for(let player of team.players){
                 // console.log(player.id);
                 $(`#${team.id}`).find('.player-detail').append(
@@ -237,6 +279,7 @@ $('#create-new-team').on('click', function (){
     $('#team-color').val("");
 });  
    
+
 
 
 
