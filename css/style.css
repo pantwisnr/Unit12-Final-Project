@@ -328,13 +328,14 @@ dialog {
 
 
 .newTeam .player-detail > * > *:first-child{
+    font-size: 0.9rem;
     padding-inline-end: 0.26rem;
 }
 
 
 .newTeam .player-detail > * > *:last-child {
     color: var(--font-color);
-    margin-left: 0.5rem;
+    margin-left: 0.15rem;
     border-radius: 50%;
     background: red;
     border: transparent;
