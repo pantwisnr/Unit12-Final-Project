@@ -45,6 +45,25 @@ class TeamAdmin {
         // use the ajax get method to get all posts from API
 
         return $.get(this.url);
+
+
+        // let xhr = new XMLHttpRequest();
+
+        // xhr.open('GET', 'https://6458916f4eb3f674df77425b.mockapi.io/TeamsInfo', true);
+
+        // xhr.addEventListener('load', ()=>{
+        //     if(xhr.status === 200 && xhr.readyState === 4){
+        //         const res = JSON.parse(xhr.responseText);
+        //         var newResult = JSON.parse(this.responseText)
+        //     } else{
+        //         throw new Eror("Bad Request");
+        //     }
+        //     console.log(newResult);
+        // }) 
+        
+        // xhr.send();
+        
+
     }
 
 

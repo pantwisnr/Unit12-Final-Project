@@ -3,6 +3,7 @@
 - This is going to be a project of teams where users can create team, get team info, update team info and delete team from the using the MOCK API. 
 
 
+
 ----------------------------------------------------------------
 ACCESSING STATUS AND READYSTATE IN JQUERY AJAX CALLS:
 --------------------------------------------------------------
@@ -11,7 +12,7 @@ ACCESSING STATUS AND READYSTATE IN JQUERY AJAX CALLS:
         // let myResponse = new XMLHttpRequest();
         // myResponse.open('GET', this.url, true);
 
- I struggled a lot because i didnt understand what was actually going on behind the hood.
+ I struggled a lot because i didnt understand what was actually going on under the hood.
 
         // let Admin = TeamAdmin.getAllTeams();
         // Admin.then(console.log(Admin.responseText));
