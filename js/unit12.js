@@ -43,21 +43,6 @@ class TeamAdmin {
 
     static getAllTeams(){
         // use the ajax get method to get all posts from API
-        
-        
-        // let myResponse = new XMLHttpRequest();
-        // myResponse.open('GET', this.url, true);
-        // myResponse.addEventListener('load', ()=>{
-        //     if(myResponse.status === 200 && myResponse.readyState === 4){
-        //         console.log(myResponse.responseText)
-        //     } else{
-        //         throw new Error("Bad Request");
-        //     }
-        // }) 
-        
-        // myResponse.send();
-        // console.log(myResponse)
-        
 
         return $.get(this.url);
     }
@@ -238,16 +223,6 @@ class TeamDOMManager {
                         );} );
                 }
             }
-
-            // border: 2px solid red;
-
-
-            // $( selector ).on( "mouseenter", function () {
-            //     $(this).css("background-color", "green");} ).on( "mouseleave", function () {
-            //         $(this).css("background-color", "inherit");} );
-
-            // function () {
-            //     $(this).css("background-color", "green");}
             
             for(let player of team.players){
                 // console.log(player.id);
